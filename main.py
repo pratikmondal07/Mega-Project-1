@@ -9,7 +9,7 @@ import os
 import google.generativeai as genai
 
 # ✅ Configure Gemini
-genai.configure(api_key="AIzaSyCb1C48-tZ3KWcv8nZRs0Txug2vfnsikaw")
+genai.configure("api_key")
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 # pip install pocketsphinx google-generativeai
