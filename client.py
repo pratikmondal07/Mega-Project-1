@@ -1,15 +1,19 @@
-from openai import OpenAI
- 
-# pip install openai 
-# if you saved the key under a different environment variable name, you can do something like:
-client = OpenAI(api_key="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",)
+import google.generativeai as genai
 
-completion = client.chat.completions.create(
-  model="gpt-3.5-turbo",
-  messages=[
-    {"role": "system", "content": "You are a virtual assistant named jarvis skilled in general tasks like Alexa and Google Cloud"},
-    {"role": "user", "content": "what is coding"}
-  ]
+# ✅ Configure Gemini API
+genai.configure(api_key="AIzaSyCb1C48-tZ3KWcv8nZRs0Txug2vfnsikaw")
+
+# ✅ Create Gemini model client
+model = genai.GenerativeModel('gemini-1.5-flash')
+
+# ✅ Prompt (combining system and user)
+prompt = (
+    "You are a virtual assistant named Jarvis, skilled in general tasks like Alexa and Google Cloud.\n"
+    "User: what is coding"
 )
 
-print(completion.choices[0].message.content)
+# ✅ Generate response
+response = model.generate_content(prompt)
+
+# ✅ Print result
+print(response.text.strip())
